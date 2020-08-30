@@ -72,27 +72,29 @@ const styles = StyleSheet.create({
     marginRight: 10,
     width: 220,
     alignItems: "center",
+    height: 40,
+    paddingTop: 0
   },
   facebook: {
     fontSize: 15,
     textTransform: "uppercase",
     color: "#3c5a99",
-    marginLeft: 6,
     display: "flex",
+    marginTop: 10
   },
   google: {
     fontSize: 15,
     textTransform: "uppercase",
     color: "#4285f4",
-    marginLeft: 6,
     display: "flex",
+    marginTop: 10
   },
   twitter: {
     fontSize: 15,
     textTransform: "uppercase",
     color: "#1da1f2",
-    marginLeft: 6,
     display: "flex",
+    marginTop: 10
   },
   btnContainer: {
     flex: 1,
@@ -103,19 +105,16 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
   facIcon: {
-    height: 5,
-    width: 5,
-    marginRight: 7,
+    height: 25,
+    width: 25,
   },
   googIcon: {
-    height: 5,
-    width: 5,
-    marginRight: 7,
+    height: 25,
+    width: 25,
   },
   twIcon: {
-    height: 5,
-    width: 5,
-    marginRight: 7,
+    height: 25,
+    width: 25,
   },
   step1: {},
 });
