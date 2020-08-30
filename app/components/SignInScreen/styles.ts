@@ -7,7 +7,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     display: "flex",
-    height: 300,
+    height: 460,
   },
   signInBlock: {
     width: "100%",
@@ -34,6 +34,11 @@ const styles = StyleSheet.create({
     padding: 8,
     alignItems: "center",
   },
+  signTitle: {
+    fontSize: 16,
+    textTransform: "uppercase",
+    color: "#fff",
+  },
   signin: {
     display: "flex",
     backgroundColor: "#ff671b",
@@ -48,15 +53,14 @@ const styles = StyleSheet.create({
     fontSize: 15,
     color: "#000",
   },
-  signTitle: {
-    fontSize: 15,
-    textTransform: "uppercase",
-    color: "#fff",
+  signinWithContent: {
+    flexDirection: "row",
+    justifyContent: "space-between",
   },
   signInWith: {
     flexDirection: "column",
     justifyContent: "space-between",
-    marginTop: 20,
+    marginTop: 10,
   },
   signWith: {
     backgroundColor: "#fff",
@@ -74,7 +78,6 @@ const styles = StyleSheet.create({
     textTransform: "uppercase",
     color: "#3c5a99",
     marginLeft: 6,
-    height: 42,
     display: "flex",
   },
   google: {
@@ -82,7 +85,6 @@ const styles = StyleSheet.create({
     textTransform: "uppercase",
     color: "#4285f4",
     marginLeft: 6,
-    height: 42,
     display: "flex",
   },
   twitter: {
@@ -90,7 +92,6 @@ const styles = StyleSheet.create({
     textTransform: "uppercase",
     color: "#1da1f2",
     marginLeft: 6,
-    height: 42,
     display: "flex",
   },
   btnContainer: {
@@ -104,19 +105,22 @@ const styles = StyleSheet.create({
   facIcon: {
     height: 5,
     width: 5,
+    marginRight: 7,
+    color: "#3c5a99",
   },
   googIcon: {
     height: 5,
     width: 5,
+    marginRight: 7,
+    color: '#4285f4'
   },
   twIcon: {
     height: 5,
     width: 5,
+    marginRight: 7,
+    color: '#1da1f2'
   },
-  step1: {}
+  step1: {},
 });
-
-
-
 
 export default styles;
