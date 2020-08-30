@@ -14,23 +14,30 @@ function SignInScreen(props: any) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-
   const login = () => {
     console.log(password, email);
-    signIn(email, password).then(async(res: any) => {
-      console.log('res', res);
-      await AsyncStorage.setItem('userData',JSON.stringify(res));
-      console.log('from storage', await AsyncStorage.getItem('userData'));
-
-    },(error: any) => {
-      console.log('error', error);
-    });
+    signIn(email, password).then(
+      async (res: any) => {
+        console.log("res", res);
+        await AsyncStorage.setItem("userData", JSON.stringify(res));
+        console.log("from storage", await AsyncStorage.getItem("userData"));
+      },
+      (error: any) => {
+        console.log("error", error);
+      }
+    );
   };
 
   return (
     <View style={styles.container}>
       <View style={styles.signInBlock}>
-        <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
+        <View
+          style={{
+            flexDirection: "row",
+            justifyContent: "space-between",
+            backgroundColor: "#fff",
+          }}
+        >
           <Text style={styles.text}>Sign in to your account</Text>
           <TouchableOpacity onPress={() => props.onClose()}>
             <List.Icon icon="close" color="#737272" />
@@ -52,24 +59,33 @@ function SignInScreen(props: any) {
           onChangeText={(text) => setPassword(text)}
         ></TextInput>
       </View>
-      <View style={styles.nextToCard}>        
+      <View style={styles.nextToCard}>
         <TouchableOpacity style={styles.signin} onPress={() => login()}>
           <Text style={styles.signTitle}>Sign In</Text>
         </TouchableOpacity>
-         {/* <TouchableOpacity style={styles.reset}>
+        <TouchableOpacity style={styles.reset}>
           <Text style={styles.resetTitle}>Reset Password</Text>
         </TouchableOpacity>
       </View>
       <View style={styles.signInWith}>
-        <TouchableOpacity style={styles.reset}>
-          <Text style={styles.resetTitle}>Facebook</Text>
+        <TouchableOpacity style={styles.signWith}>
+          <View style={styles.signinWithContent}>
+            <List.Icon style={styles.facIcon} icon="facebook" color="#737272" />
+            <Text style={styles.facebook}>Facebook</Text>
+          </View>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.reset}>
-          <Text style={styles.signTitle}>Google</Text>
+        <TouchableOpacity style={styles.signWith}>
+          <View style={styles.signinWithContent}>
+            <List.Icon style={styles.googIcon} icon="google" color="#737272" />
+            <Text style={styles.google}>Google</Text>
+          </View>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.signin}>
-          <Text style={styles.signTitle}>Twitter</Text>
-        </TouchableOpacity> */}
+        <TouchableOpacity style={styles.signWith}>
+          <View style={styles.signinWithContent}>
+            <List.Icon style={styles.twIcon} icon="twitter" color="#737272" />
+            <Text style={styles.twitter}>Twitter</Text>
+          </View>
+        </TouchableOpacity>
       </View>
     </View>
   );
