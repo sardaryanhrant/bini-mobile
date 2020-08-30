@@ -106,19 +106,16 @@ const styles = StyleSheet.create({
     height: 5,
     width: 5,
     marginRight: 7,
-    color: "#3c5a99",
   },
   googIcon: {
     height: 5,
     width: 5,
     marginRight: 7,
-    color: '#4285f4'
   },
   twIcon: {
     height: 5,
     width: 5,
     marginRight: 7,
-    color: '#1da1f2'
   },
   step1: {},
 });

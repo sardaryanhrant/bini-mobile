@@ -70,19 +70,19 @@ function SignInScreen(props: any) {
       <View style={styles.signInWith}>
         <TouchableOpacity style={styles.signWith}>
           <View style={styles.signinWithContent}>
-            <List.Icon style={styles.facIcon} icon="facebook" color="#737272" />
+            <List.Icon style={styles.facIcon} icon="facebook" color="#3c5a99" />
             <Text style={styles.facebook}>Facebook</Text>
           </View>
         </TouchableOpacity>
         <TouchableOpacity style={styles.signWith}>
           <View style={styles.signinWithContent}>
-            <List.Icon style={styles.googIcon} icon="google" color="#737272" />
+            <List.Icon style={styles.googIcon} icon="google" color="#4285f4" />
             <Text style={styles.google}>Google</Text>
           </View>
         </TouchableOpacity>
         <TouchableOpacity style={styles.signWith}>
           <View style={styles.signinWithContent}>
-            <List.Icon style={styles.twIcon} icon="twitter" color="#737272" />
+            <List.Icon style={styles.twIcon} icon="twitter" color="#1da1f2" />
             <Text style={styles.twitter}>Twitter</Text>
           </View>
         </TouchableOpacity>
