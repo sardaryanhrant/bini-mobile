@@ -8,6 +8,7 @@ import SignUpScreen from "./app/components/SignUpScreen";
 import { BasketScreen } from "./app/screens/Basket/BasketScreen";
 import { BottomNavigation } from "react-native-paper";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import SettingsScreen from "./app/components/SettingsScreen";
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -32,15 +33,15 @@ function MyTabs() {
 export default function App() {
   const [index, setIndex] = React.useState(0);
   const [routes] = React.useState([
-    { key: "music", title: "Music", icon: "queue-music" },
-    { key: "albums", title: "Albums", icon: "album" },
-    { key: "recents", title: "Recents", icon: "history" },
+    { key: "home", title: "Home", icon: "home" },
+    { key: "basket", title: "Basket", icon: "cart" },
+    { key: "settins", title: "Settins", icon: "cog" },
   ]);
 
   const renderScene = BottomNavigation.SceneMap({
-    music: HomeScreen,
+    home: HomeScreen,
     albums: BasketScreen,
-    recents: BasketScreen,
+    settings: SettingsScreen,
   });
   return (
     // <NavigationContainer>
@@ -60,6 +61,17 @@ export default function App() {
       onIndexChange={setIndex}
       renderScene={renderScene}
     />
+    // <NavigationContainer>
+    //   <Stack.Navigator>
+    //     <Stack.Screen name="Settings" component={SettingsScreen} />
+    //     <Stack.Screen name="Basket" component={BasketScreen} />
+    //     <Stack.Screen
+    //       name="Home"
+    //       component={HomeScreen}
+    //       options={{ title: "Welcome" }}
+    //     />
+    //   </Stack.Navigator>
+    // </NavigationContainer>
   );
 }
 
