@@ -6,7 +6,8 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
-    flex: 1,
+    display: "flex",
+    height: 300,
   },
   signInBlock: {
     width: "100%",
@@ -16,16 +17,16 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 17,
     padding: 10,
-    marginTop: 7
+    marginTop: 7,
   },
   signupInput: {
-    backgroundColor: '#fff'
+    backgroundColor: "#fff",
   },
   nextToCard: {
     flexDirection: "column",
     justifyContent: "space-between",
     width: "100%",
-    marginTop: 10
+    marginTop: 10,
   },
   reset: {
     backgroundColor: "#fff",
@@ -34,15 +35,14 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   signin: {
-    display: 'flex',
+    display: "flex",
     backgroundColor: "#ff671b",
     borderRadius: 4,
     padding: 10,
     width: "100%",
     alignItems: "center",
     marginTop: 10,
-    height: 42
-
+    height: 42,
   },
   resetTitle: {
     fontSize: 15,
@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
     color: "#3c5a99",
     marginLeft: 6,
     height: 42,
-    display: 'flex'
+    display: "flex",
   },
   google: {
     fontSize: 15,
@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
     color: "#4285f4",
     marginLeft: 6,
     height: 42,
-    display: 'flex'
+    display: "flex",
   },
   twitter: {
     fontSize: 15,
@@ -91,7 +91,7 @@ const styles = StyleSheet.create({
     color: "#1da1f2",
     marginLeft: 6,
     height: 42,
-    display: 'flex'
+    display: "flex",
   },
   btnContainer: {
     flex: 1,
@@ -113,6 +113,10 @@ const styles = StyleSheet.create({
     height: 5,
     width: 5,
   },
+  step1: {}
 });
+
+
+
 
 export default styles;

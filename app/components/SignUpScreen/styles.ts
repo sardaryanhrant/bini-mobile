@@ -6,8 +6,8 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
-    flex: 1,
-    height: '100%'
+    display: 'flex',
+    height: 300,
   },
   signUpBlock: {
     width: "100%",
@@ -35,7 +35,8 @@ const styles = StyleSheet.create({
     fontSize: 16,
     textTransform: 'uppercase',
     color: '#444'
-  }
+  },
+  step1: {}
 });
 
 export default styles;

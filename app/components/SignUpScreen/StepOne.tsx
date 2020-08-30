@@ -6,8 +6,6 @@ import {
   signUpWithEmailAddressAndPassword,
   updateUser,
 } from "../../services/auth.service";
-import Step1 from "./StepOne";
-import Step2 from "./StepTwo";
 
 const theme = {
   colors: {
@@ -15,7 +13,7 @@ const theme = {
   },
 };
 
-function SignUpScreen(props: any) {
+function Step1(props: any) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setNmae] = useState("");
@@ -42,20 +40,39 @@ function SignUpScreen(props: any) {
   };
 
   return (
-    <View style={styles.container}>
-      <View style={styles.signUpBlock}>
-        <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
-          <Text style={styles.text}>Sign up for an account</Text>
-          <TouchableOpacity onPress={() => closeModal()}>
-            <List.Icon icon="close" color="#737272" />
-          </TouchableOpacity>
-        </View>
-        <Step1 />
-        <Step2 />
+    <View>
+      <TextInput
+        theme={theme}
+        label="First name*"
+        style={styles.signupInput}
+        placeholder="John"
+        onChangeText={(text) => setNmae(text)}
+      ></TextInput>
+      <TextInput
+        theme={theme}
+        style={styles.signupInput}
+        label="E-mail address*"
+        placeholder="john@doe.com"
+        onChangeText={(text) => setEmail(text)}
+      ></TextInput>
+      <TextInput
+        theme={theme}
+        label="Password*"
+        style={styles.signupInput}
+        placeholder="*********"
+        onChangeText={(text) => setPassword(text)}
+      ></TextInput>
+      <View style={styles.nextToCard}>
+        <TouchableOpacity
+          onPress={() => goToCardScreen()}
+          disabled={name == "" || password == "" || email == ""}
+          style={styles.nextBtn}
+        >
+          <Text style={styles.next}>Next</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );
 }
 
-
-export default SignUpScreen;
+export default Step1;

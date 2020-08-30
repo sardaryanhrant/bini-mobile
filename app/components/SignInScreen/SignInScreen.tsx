@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { Text, View, TouchableOpacity } from "react-native";
-import styles from "./styles";
+import { Text, View, TouchableOpacity, AsyncStorage } from "react-native";
 import { TextInput, List } from "react-native-paper";
+import { signIn } from "../../services/auth.service";
+import styles from "./styles";
 
 const theme = {
   colors: {
@@ -13,8 +14,17 @@ function SignInScreen(props: any) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+
   const login = () => {
     console.log(password, email);
+    signIn(email, password).then(async(res: any) => {
+      console.log('res', res);
+      await AsyncStorage.setItem('userData',JSON.stringify(res));
+      console.log('from storage', await AsyncStorage.getItem('userData'));
+
+    },(error: any) => {
+      console.log('error', error);
+    });
   };
 
   return (
