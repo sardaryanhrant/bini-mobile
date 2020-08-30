@@ -1,6 +1,6 @@
 import firebase, { auth, firestore, storage } from "./firebase";
 
-export function signUpWithEmailAddressAndPassword(
+export function signUpWithEmaiAndPassword(
   emailAddress: string,
   password: string
 ): any {

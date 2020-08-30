@@ -30,13 +30,24 @@ const styles = StyleSheet.create({
     marginTop: 10,
     borderRadius: 4,
     padding: 7,
+    width: 60
   },
   next: {
     fontSize: 16,
     textTransform: 'uppercase',
     color: '#444'
   },
-  step1: {}
+  step1: {},
+  inputHalf: {
+    display: 'flex',
+    width: '44%'
+  },
+  row: {
+    display:'flex',
+    flexDirection: 'row',
+    width: '100%',
+    justifyContent: 'space-between'
+  }
 });
 
 export default styles;

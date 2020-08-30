@@ -3,7 +3,7 @@ import { Text, TouchableOpacity, View, AsyncStorage } from "react-native";
 import styles from "./styles";
 import { TextInput, List } from "react-native-paper";
 import {
-  signUpWithEmailAddressAndPassword,
+  signUpWithEmaiAndPassword,
   updateUser,
 } from "../../services/auth.service";
 
@@ -23,7 +23,7 @@ function Step1(props: any) {
   };
 
   const goToCardScreen = () => {
-    signUpWithEmailAddressAndPassword(email, password).then(
+    signUpWithEmaiAndPassword(email, password).then(
       async (user: any) => {
         updateUser({
           displayName: name,
@@ -31,6 +31,7 @@ function Step1(props: any) {
         })?.then(async (res) => {
           await AsyncStorage.setItem("userData", JSON.stringify(user));
           console.log("from storage", await AsyncStorage.getItem("userData"));
+          props.setStep(2);
         });
       },
       (error: any) => {
@@ -38,6 +39,8 @@ function Step1(props: any) {
       }
     );
   };
+
+  if (props.step !== 1) return null;
 
   return (
     <View>

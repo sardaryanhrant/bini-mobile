@@ -15,13 +15,12 @@ function Step2(props: any) {
     },
   };
 
-   const goToStep3 = async () => {
+   const goToStep4 = async () => {
     const card = {cc, expire,cvc};
     await AsyncStorage.setItem("creditCard", JSON.stringify(card));
-    props.setStep(3);
   };
 
-  if (props.step !== 2) {
+  if (props.step !== 3) {
     return null;
   } else {
     return (
@@ -53,7 +52,7 @@ function Step2(props: any) {
         </View>
         <View style={styles.nextToCard}>
           <TouchableOpacity
-            onPress={() => goToStep3()}
+            onPress={() => goToStep4()}
             disabled={cc == "" || expire == "" || cvc == ""}
             style={styles.nextBtn}
           >

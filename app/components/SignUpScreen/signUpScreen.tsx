@@ -2,12 +2,10 @@ import React, { useState } from "react";
 import { Text, TouchableOpacity, View, AsyncStorage } from "react-native";
 import styles from "./styles";
 import { TextInput, List } from "react-native-paper";
-import {
-  signUpWithEmailAddressAndPassword,
-  updateUser,
-} from "../../services/auth.service";
+
 import Step1 from "./StepOne";
 import Step2 from "./StepTwo";
+import Step3 from "./StepThree";
 
 const theme = {
   colors: {
@@ -19,26 +17,10 @@ function SignUpScreen(props: any) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setNmae] = useState("");
+  const [step, setStep] = useState(3);
 
   const closeModal = () => {
     props.onClose();
-  };
-
-  const goToCardScreen = () => {
-    signUpWithEmailAddressAndPassword(email, password).then(
-      async (user: any) => {
-        updateUser({
-          displayName: name,
-          credit_card: "4242424242424242",
-        })?.then(async (res) => {
-          await AsyncStorage.setItem("userData", JSON.stringify(user));
-          console.log("from storage", await AsyncStorage.getItem("userData"));
-        });
-      },
-      (error: any) => {
-        console.log("error", error);
-      }
-    );
   };
 
   return (
@@ -50,12 +32,12 @@ function SignUpScreen(props: any) {
             <List.Icon icon="close" color="#737272" />
           </TouchableOpacity>
         </View>
-        <Step1 />
-        <Step2 />
+        <Step1 step={step} setStep={setStep} />
+        <Step2 step={step} setStep={setStep} />
+        <Step3 step={step} setStep={setStep} />
       </View>
     </View>
   );
 }
-
 
 export default SignUpScreen;
