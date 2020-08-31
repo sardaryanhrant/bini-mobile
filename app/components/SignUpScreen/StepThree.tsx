@@ -66,8 +66,6 @@ function Step2(props: any) {
       quality: 1,
     });
     if (!result.cancelled) {
-      const img = result.uri;
-      console.log(img);
       
     }
   };

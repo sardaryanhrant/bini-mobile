@@ -6,6 +6,7 @@ import HomeScreen from "./app/screens/HomeScreen";
 import SignInScreen from "./app/components/SignInScreen";
 import SignUpScreen from "./app/components/SignUpScreen";
 import { BasketScreen } from "./app/screens/Basket/BasketScreen";
+import SettingsScreen from "./app/components/SettingsScreen";
 
 const Stack = createStackNavigator();
 
@@ -13,6 +14,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
+        <Stack.Screen name="Settings" component={SettingsScreen} />
         <Stack.Screen name="Basket" component={BasketScreen} />
         <Stack.Screen
           name="Home"
