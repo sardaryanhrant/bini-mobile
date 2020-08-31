@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { Text, View, TouchableOpacity, AsyncStorage } from "react-native";
+import { Text, View, ScrollView, TouchableOpacity, AsyncStorage } from "react-native";
 import { TextInput, List } from "react-native-paper";
 import io from "socket.io-client";
 import styles from "./styles";
 import { BasketItem } from "../../components/BasketItem/BasketItem";
-import { ScrollView } from "react-native-gesture-handler";
 
 export function BasketScreen(props: any): any {
   const items = [
