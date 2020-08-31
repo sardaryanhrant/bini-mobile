@@ -13,6 +13,7 @@ const theme = {
   },
 };
 
+
 function SignUpScreen(props: any) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
