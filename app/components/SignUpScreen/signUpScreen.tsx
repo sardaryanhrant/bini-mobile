@@ -35,7 +35,7 @@ function SignUpScreen(props: any) {
         </View>
         <Step1 step={step} setStep={setStep} />
         <Step2 step={step} setStep={setStep} />
-        <Step3 step={step} setStep={setStep} />
+        <Step3 step={step} setStep={setStep} navigation={props.navigation}/>
       </View>
     </View>
   );

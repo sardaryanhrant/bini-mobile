@@ -10,17 +10,21 @@ import { TextInput, List } from "react-native-paper";
 import * as Permissions from "expo-permissions";
 import { Button, Dialog, Portal } from "react-native-paper";
 import Constants from "expo-constants";
-import * as ImagePicker from 'expo-image-picker';
+import * as ImagePicker from "expo-image-picker";
 
 import styles from "./styles";
 
 function Step2(props: any) {
-
-  const [img, uri] = useState("");
+  const [img, setImg] = useState(require("../../../assets/png-avatar.png"));
   const [selectorVisible, setVisible] = useState(false);
   const [cc, setCc] = useState("");
   const [expire, setSexpire] = useState("");
   const [cvc, setCode] = useState("");
+
+  AsyncStorage.getItem('avatar').then(avatar => {
+    // console.log(avatar)
+    setImg({uri: avatar})
+  })
 
   const theme = {
     colors: {
@@ -30,7 +34,7 @@ function Step2(props: any) {
 
   const goToStep4 = async () => {
     const card = { cc, expire, cvc };
-    await AsyncStorage.setItem("avatar", JSON.stringify(card));
+    props.navigation.navigate('Basket')
   };
 
   const _showDialog = () => setVisible(true);
@@ -51,7 +55,7 @@ function Step2(props: any) {
       quality: 1,
     });
     if (!result.cancelled) {
-      console.log('-----------');
+      console.log("-----------");
     }
   };
 
@@ -65,8 +69,12 @@ function Step2(props: any) {
       aspect: [1, 1],
       quality: 1,
     });
+
     if (!result.cancelled) {
-      
+      const img = result;
+      setImg({uri: 'data:image/png;base64,' + img.base64});
+      AsyncStorage.setItem('avatar', 'data:image/png;base64,' + img.base64).then();
+      console.log(img.base64);
     }
   };
 
@@ -92,10 +100,7 @@ function Step2(props: any) {
   } else {
     return (
       <View style={styles.choosePhoto}>
-        <Image
-          source={require("../../../assets/png-avatar.png")}
-          style={styles.selectAvatarImage}
-        />
+        <Image source={img} style={styles.selectAvatarImage} />
         <TouchableOpacity
           onPress={() => chooseImage()}
           style={styles.chooseImg}
@@ -104,7 +109,16 @@ function Step2(props: any) {
             <List.Icon style={styles.chooseIcon} icon="image" color="#000" />
             <Text style={styles.choose}>Choose...</Text>
           </View>
+          
         </TouchableOpacity>
+        <View style={styles.nextToCard}>
+        <TouchableOpacity
+          onPress={() => goToStep4()}
+          style={styles.nextBtn}
+        >
+          <Text style={styles.next}>Next</Text>
+        </TouchableOpacity>
+        </View>
         <Portal>
           <Dialog visible={selectorVisible} onDismiss={_hideDialog}>
             <Dialog.Actions style={styles.dialogActions}>

@@ -1,25 +1,22 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import { Text, View, Image, TouchableOpacity, Modal } from "react-native";
 import styles from "./styles";
-import { NavigationStackScreenProps } from "react-navigation-stack";
 import { Dialog, Portal, Provider } from "react-native-paper";
 import SignUpScreen from "../../components/SignUpScreen";
 import SignInScreen from "../../components/SignInScreen";
+import { auth } from "../../services/firebase";
+function  HomeScreen({navigation}) {
 
-interface Props extends NavigationStackScreenProps {}
-class HomeScreen extends Component {
-  state = {
-    modalSignUpVisible: false,
-    modalSignInVisible: false,
-  };
-  showDialogSignUp = () => this.setState({ modalSignUpVisible: true });
-  hideDialogSignUp = () => this.setState({ modalSignUpVisible: false });
-  showDialogSignIn = () => this.setState({ modalSignInVisible: true });
-  hideDialogSignIn = () => this.setState({ modalSignInVisible: false });
+  console.log(navigation)
 
-  async componentDidMount() {}
+  const [modalSignUpVisible, setmodalSignUpVisible] = useState(false)
+  const [modalSignInVisible, setmodalSignInVisible] = useState(false)
 
-  render() {
+  const showDialogSignUp = () => setmodalSignUpVisible(true );
+  const hideDialogSignUp = () => setmodalSignUpVisible(false);
+  const showDialogSignIn = () => setmodalSignInVisible( true );
+  const hideDialogSignIn = () => setmodalSignInVisible(false );
+  if(auth.currentUser) {
     return (
       <View style={styles.container}>
         <View style={styles.logoOrange}>
@@ -30,40 +27,55 @@ class HomeScreen extends Component {
           <Text style={styles.bini}>BINI</Text>
           <Text style={styles.signInUp}>Your local honey pot.</Text>
         </View>
+      </View>
+    )
+  } else
+
+    return (
+      <View style={styles.container}>
+        <View style={styles.logoOrange}>
+          <Image
+            style={styles.orangeLogo}
+            source={require("../../../assets/logo-orange.png")}
+          />
+          <Text style={styles.bini}>BINI</Text>
+          <Text style={styles.signInUp}>Your local honey pot.</Text>
+        </View>
+
         <View style={styles.signInUp}>
           <TouchableOpacity
-            onPress={this.showDialogSignUp}
+            onPress={showDialogSignUp}
             style={styles.signBtn}
           >
             <Text style={styles.sign}>Sign Up</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={this.showDialogSignIn}>
+          <TouchableOpacity onPress={showDialogSignIn}>
             <Text style={styles.sign}>Sign In</Text>
           </TouchableOpacity>
         </View>
         <Provider>
           <Portal>
             <Dialog
-              visible={this.state.modalSignUpVisible}
-              onDismiss={this.hideDialogSignUp}
+              visible={modalSignUpVisible}
+              onDismiss={hideDialogSignUp}
             >
-              <SignUpScreen onClose={this.hideDialogSignUp} />
+              <SignUpScreen onClose={hideDialogSignUp}  navigation={navigation}/>
             </Dialog>
           </Portal>
         </Provider>
         <Provider>
           <Portal>
             <Dialog
-              visible={this.state.modalSignInVisible}
-              onDismiss={this.hideDialogSignIn}
+              visible={modalSignInVisible}
+              onDismiss={hideDialogSignIn}
             >
-              <SignInScreen onClose={this.hideDialogSignIn} />
+              <SignInScreen onClose={hideDialogSignIn}/>
             </Dialog>
           </Portal>
         </Provider>
       </View>
     );
-  }
+  
 }
 
 export default HomeScreen;

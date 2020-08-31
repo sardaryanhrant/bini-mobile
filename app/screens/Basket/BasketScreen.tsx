@@ -85,10 +85,13 @@ export function BasketScreen(props: any): any {
   }, []);
 
   return (
-    <ScrollView style={styles.basketWrapper}>
-      {basket.map((item, index) => (
-        <BasketItem key={index} item={item} />
-      ))}
-    </ScrollView>
+    <View style={styles.basket}>
+      <Text></Text>
+      <ScrollView style={styles.basketWrapper}>
+        {basket.map((item, index) => (
+          <BasketItem key={index} item={item} />
+        ))}
+      </ScrollView>
+    </View>
   );
 }
