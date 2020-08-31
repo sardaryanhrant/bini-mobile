@@ -21,6 +21,7 @@ function SignInScreen(props: any) {
         console.log("res", res);
         await AsyncStorage.setItem("userData", JSON.stringify(res));
         console.log("from storage", await AsyncStorage.getItem("userData"));
+        props.navigation.navigate('Home')
       },
       (error: any) => {
         console.log("error", error);

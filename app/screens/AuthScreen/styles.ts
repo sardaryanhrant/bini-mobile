@@ -5,10 +5,11 @@ const styles = StyleSheet.create({
     padding: 20,
     backgroundColor: "#fff",
     alignItems: "center",
+    justifyContent: "space-between",
     height: '100%'
   },
   logoOrange: {
-    // justifyContent: "space-between",
+    justifyContent: "space-between",
     alignItems: "center",
     width: "100%",
     marginTop: 30,
@@ -46,21 +47,6 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     letterSpacing: 1
   },
-  logout: {
-    height: 90,
-    width: 90,
-    display: "flex",
-    borderRadius: 80,
-    backgroundColor: "#ff671b",
-    alignItems: "center",
-    justifyContent: "center",
-    alignSelf: "flex-start"
-  },
-  logoutText: {
-    color: "#ffffff",
-    fontWeight: "bold",
-    fontSize:18
-  }
 });
 
 export default styles;
