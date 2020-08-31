@@ -18,7 +18,7 @@ function SignUpScreen(props: any) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setNmae] = useState("");
-  const [step, setStep] = useState(3);
+  const [step, setStep] = useState(1);
 
   const closeModal = () => {
     props.onClose();

@@ -34,7 +34,7 @@ function Step2(props: any) {
 
   const goToStep4 = async () => {
     const card = { cc, expire, cvc };
-    props.navigation.navigate('Basket')
+    props.navigation.navigate('Home')
   };
 
   const _showDialog = () => setVisible(true);
