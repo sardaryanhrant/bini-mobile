@@ -90,11 +90,11 @@ function AccountScreen(props: any) {
         />
         <View style={{ alignItems: "center" }}>
           <Text>Profile completion</Text>
-          <Text>33%</Text>
+          <Text style={styles.orange}>33%</Text>
         </View>
         <View style={{ alignItems: "center" }}>
           <Text>Security rating</Text>
-          <Text>100%</Text>
+          <Text style={styles.orange}>100%</Text>
         </View>
       </View>
       <TouchableOpacity onPress={() => chooseImage()} style={styles.chooseImg}>
@@ -103,23 +103,6 @@ function AccountScreen(props: any) {
           <Text style={styles.choose}>Choose</Text>
         </View>
       </TouchableOpacity>
-      <Provider>
-        <Portal>
-          <Dialog visible={selectorVisible} onDismiss={_hideDialog}>
-            <Dialog.Actions style={styles.dialogActions}>
-              <Button onPress={chooseCameraPhoto} uppercase={false}>
-                Take Photo ...
-              </Button>
-              <Button onPress={chooseLibraryPhoto} uppercase={false}>
-                From Library ...
-              </Button>
-              <Button onPress={_hideDialog} uppercase={false}>
-                Cancel
-              </Button>
-            </Dialog.Actions>
-          </Dialog>
-        </Portal>
-      </Provider>
       <View style={{ flexDirection: "column", marginTop: 10, padding: 10 }}>
         <View
           style={{
@@ -128,12 +111,14 @@ function AccountScreen(props: any) {
             marginTop: 12,
           }}
         >
-          <List.Icon style={styles.chooseIcon} icon="facebook" color="#000" />
-          <View style={{ flexDirection: "column" }}>
-            <Text>First Name</Text>
-            <Text>Test</Text>
+          <View style={{ flexDirection: "row" }}>
+            <List.Icon style={styles.chooseIcon} icon="account" color="grey" />
+            <View style={{ flexDirection: "column", marginTop: 6 }}>
+              <Text>First Name</Text>
+              <Text>Test</Text>
+            </View>
           </View>
-          <List.Icon style={styles.chooseIcon} icon="pencil" color="#000" />
+          <List.Icon style={styles.chooseIcon} icon="pencil" color="grey" />
         </View>
         <View
           style={{
@@ -142,12 +127,14 @@ function AccountScreen(props: any) {
             marginTop: 12,
           }}
         >
-          <List.Icon style={styles.chooseIcon} icon="facebook" color="#000" />
-          <View style={{ flexDirection: "column" }}>
-            <Text>Last Name</Text>
-            <Text>Test</Text>
+          <View style={{ flexDirection: "row" }}>
+            <List.Icon style={styles.chooseIcon} icon="account" color="grey" />
+            <View style={{ flexDirection: "column", marginTop: 6 }}>
+              <Text>Last Name</Text>
+              <Text>Test</Text>
+            </View>
           </View>
-          <List.Icon style={styles.chooseIcon} icon="pencil" color="#000" />
+          <List.Icon style={styles.chooseIcon} icon="pencil" color="grey" />
         </View>
         <View
           style={{
@@ -156,12 +143,14 @@ function AccountScreen(props: any) {
             marginTop: 12,
           }}
         >
-          <List.Icon style={styles.chooseIcon} icon="facebook" color="#000" />
-          <View style={{ flexDirection: "column" }}>
-            <Text>Username</Text>
-            <Text>Test</Text>
+          <View style={{ flexDirection: "row" }}>
+            <List.Icon style={styles.chooseIcon} icon="account" color="grey" />
+            <View style={{ flexDirection: "column", marginTop: 6 }}>
+              <Text>Username</Text>
+              <Text>Test</Text>
+            </View>
           </View>
-          <List.Icon style={styles.chooseIcon} icon="pencil" color="#000" />
+          <List.Icon style={styles.chooseIcon} icon="pencil" color="grey" />
         </View>
         <View
           style={{
@@ -170,12 +159,14 @@ function AccountScreen(props: any) {
             marginTop: 12,
           }}
         >
-          <List.Icon style={styles.chooseIcon} icon="facebook" color="#000" />
-          <View style={{ flexDirection: "column" }}>
-            <Text>E-mail address</Text>
-            <Text>Test</Text>
+          <View style={{ flexDirection: "row" }}>
+            <List.Icon style={styles.chooseIcon} icon="email" color="grey" />
+            <View style={{ flexDirection: "column", marginTop: 6 }}>
+              <Text>E-mail address</Text>
+              <Text>Test</Text>
+            </View>
           </View>
-          <List.Icon style={styles.chooseIcon} icon="pencil" color="#000" />
+          <List.Icon style={styles.chooseIcon} icon="pencil" color="grey" />
         </View>
         <View
           style={{
@@ -185,10 +176,10 @@ function AccountScreen(props: any) {
             borderBottomColor: "#c7c7c7",
           }}
         >
-          <List.Icon style={styles.chooseIcon} icon="facebook" color="#000" />
-          <View style={{ flexDirection: "column" }}>
-            <Text>Signed In ----</Text>
-            <Text>Sunday, August --</Text>
+          <List.Icon style={styles.chooseIcon} icon="clock" color="grey" />
+          <View style={{ flexDirection: "column", marginTop: 6 }}>
+            <Text>Signed In</Text>
+            <Text>Monday,August 31</Text>
           </View>
         </View>
         <View
@@ -198,19 +189,36 @@ function AccountScreen(props: any) {
             marginTop: 25,
           }}
         >
-          <List.Icon style={styles.chooseIcon} icon="delete" color="#000" />
-          <View style={{ flexDirection: "column" }}>
-            <Text>Delete Account</Text>
-            <Text>Accounts can’t be recovered</Text>
+          <View style={{ flexDirection: "row" }}>
+            <List.Icon style={styles.chooseIcon} icon="delete" color="grey" />
+            <View style={{ flexDirection: "column", marginTop: 6 }}>
+              <Text>Delete Account</Text>
+              <Text>Accounts can’t be recovered</Text>
+            </View>
           </View>
-          <TouchableOpacity
-            style={styles.deleteProfile}
-          >
+          <TouchableOpacity style={styles.deleteProfile}>
             <View style={styles.signinWithContent}>
               <Text style={styles.delete}>Delete</Text>
             </View>
           </TouchableOpacity>
         </View>
+        <Provider>
+          <Portal>
+            <Dialog visible={selectorVisible} onDismiss={_hideDialog}>
+              <Dialog.Actions style={styles.dialogActions}>
+                <Button onPress={chooseCameraPhoto} uppercase={false}>
+                  Take Photo ...
+                </Button>
+                <Button onPress={chooseLibraryPhoto} uppercase={false}>
+                  From Library ...
+                </Button>
+                <Button onPress={_hideDialog} uppercase={false}>
+                  Cancel
+                </Button>
+              </Dialog.Actions>
+            </Dialog>
+          </Portal>
+        </Provider>
       </View>
     </View>
   );

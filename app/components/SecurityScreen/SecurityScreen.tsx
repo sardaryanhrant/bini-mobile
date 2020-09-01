@@ -19,9 +19,11 @@ function SecurityScreen(props: any) {
           marginTop: 8,
         }}
       >
-        <List.Icon icon="lock" color="grey" />
-        <View style={{ flexDirection: "column" }}>
-          <Text style={styles.password}>Password</Text>
+        <View style={{ flexDirection: "row" }}>
+          <List.Icon icon="lock" color="grey" />
+          <View style={{ flexDirection: "column" }}>
+            <Text style={styles.password}>Password</Text>
+          </View>
         </View>
         <List.Icon icon="pencil" color="grey" />
       </View>

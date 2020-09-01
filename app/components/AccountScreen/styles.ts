@@ -22,13 +22,18 @@ const styles = StyleSheet.create({
     paddingTop: 0,
     marginLeft: 10
   },
+  orange: {
+    color: '#ff671b',
+    fontSize: 18,
+    fontWeight: '500'
+  },
   signinWithContent: {
     flexDirection: "row",
     justifyContent: "space-between",
   },
   chooseIcon: {
-    width: 20,
-    height: 20,
+    width: 30,
+    height: 30,
   },
   choose: {
     marginTop: 10,
@@ -50,7 +55,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
     height: 40,
     paddingTop: 0,
-    marginLeft: 10
+    marginLeft: 10,
+    marginTop: 4
   }
 });
 

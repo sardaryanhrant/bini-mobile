@@ -19,16 +19,14 @@ const theme = {
 
 function SettingsScreen(props: any) {
   return (
-    <ScrollView>
     <View style={styles.container}>
-      <Tab.Navigator>
+      <Tab.Navigator style={{marginTop: 20, backgroundColor: 'red'}}>
         <Tab.Screen name="Account" component={AccountScreen} />
         <Tab.Screen name="Appearance" component={AppearanceScreen} />
         <Tab.Screen name="Links" component={LinksScreen} />
         <Tab.Screen name="Security" component={SecurityScreen} />
       </Tab.Navigator>
     </View>
-    </ScrollView>
   );
 }
 
