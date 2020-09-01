@@ -3,7 +3,7 @@ import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
   choosePhoto: {
     display: "flex",
-    justifyContent: 'space-between',
+    justifyContent: "space-between",
   },
   selectAvatarImage: {
     width: 100,
@@ -20,12 +20,12 @@ const styles = StyleSheet.create({
     alignItems: "center",
     height: 40,
     paddingTop: 0,
-    marginLeft: 10
+    marginLeft: 10,
   },
   orange: {
-    color: '#ff671b',
+    color: "#ff671b",
     fontSize: 18,
-    fontWeight: '500'
+    fontWeight: "500",
   },
   signinWithContent: {
     flexDirection: "row",
@@ -36,14 +36,16 @@ const styles = StyleSheet.create({
     height: 30,
   },
   choose: {
-    marginTop: 10,
+    marginTop: 12,
     textTransform: "uppercase",
     fontSize: 16,
+    color: '#fff',
   },
   delete: {
     marginTop: 10,
     textTransform: "uppercase",
     fontSize: 16,
+    color: '#fff'
   },
   dialogActions: {
     flexDirection: "column",
@@ -56,8 +58,24 @@ const styles = StyleSheet.create({
     height: 40,
     paddingTop: 0,
     marginLeft: 10,
-    marginTop: 4
-  }
+    marginTop: 4,
+  },
+  add: {
+    marginTop: 10,
+    textTransform: "uppercase",
+    fontSize: 16,
+    color: '#fff'
+  },
+  addProfile: {
+    backgroundColor: "#ff671b",
+    borderRadius: 4,
+    width: 70,
+    alignItems: "center",
+    height: 40,
+    paddingTop: 0,
+    marginLeft: 10,
+    marginTop: 4,
+  },
 });
 
 export default styles;

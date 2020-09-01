@@ -99,7 +99,7 @@ function AccountScreen(props: any) {
       </View>
       <TouchableOpacity onPress={() => chooseImage()} style={styles.chooseImg}>
         <View style={styles.signinWithContent}>
-          <List.Icon style={styles.chooseIcon} icon="image" color="#000" />
+          <List.Icon style={styles.chooseIcon} icon="image" color="#fff" />
           <Text style={styles.choose}>Choose</Text>
         </View>
       </TouchableOpacity>
@@ -118,7 +118,12 @@ function AccountScreen(props: any) {
               <Text>Test</Text>
             </View>
           </View>
-          <List.Icon style={styles.chooseIcon} icon="pencil" color="grey" />
+          <TouchableOpacity style={styles.addProfile}>
+            <View style={styles.signinWithContent}>
+              <Text style={styles.add}>Add</Text>
+            </View>
+          </TouchableOpacity>
+          {/* <List.Icon style={styles.chooseIcon} icon="pencil" color="grey" /> */}
         </View>
         <View
           style={{

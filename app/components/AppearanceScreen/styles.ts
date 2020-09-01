@@ -27,6 +27,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
     textTransform: "uppercase",
     fontSize: 16,
+    color: '#fff'
   },
   resetTheme: {
     backgroundColor: "#ff671b",

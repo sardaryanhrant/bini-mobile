@@ -91,7 +91,7 @@ function AppearanceScreen(props: any) {
           </View>
           <TouchableOpacity style={styles.resetTheme}>
             <View style={styles.resetThemeContent}>
-              <Text style={styles.reset}>Delete</Text>
+              <Text style={styles.reset}>Reset</Text>
             </View>
           </TouchableOpacity>
         </View>
