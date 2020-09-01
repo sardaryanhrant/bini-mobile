@@ -29,7 +29,7 @@ function Step1(props: any) {
           displayName: name,
           credit_card: "4242424242424242",
         })?.then(async (res) => {
-          await AsyncStorage.setItem("userData", JSON.stringify(user));
+          await AsyncStorage.setItem("userData", JSON.stringify(user.user));
           console.log("from storage", await AsyncStorage.getItem("userData"));
           props.setStep(2);
         });
