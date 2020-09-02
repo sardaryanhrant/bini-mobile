@@ -13,18 +13,16 @@ import * as Permissions from "expo-permissions";
 import Constants from "expo-constants";
 import * as ImagePicker from "expo-image-picker";
 
-const theme = {
-  colors: {
-    primary: "#ff671b",
-  },
-};
-
 function AccountScreen(props: any) {
-  const [selectorVisible, setVisible] = useState(false);
+  const [img, setImg] = useState(require("../../../assets/png-avatar.png"));
+  AsyncStorage.getItem("avatar").then((avatar) => {
+    setImg({ uri: avatar });
+    console.log(avatar);
+  });
 
+  const [selectorVisible, setVisible] = useState(false);
   const _showDialog = () => setVisible(true);
   const _hideDialog = () => setVisible(false);
-
   const chooseImage = () => {
     _showDialog();
   };
@@ -55,6 +53,12 @@ function AccountScreen(props: any) {
       quality: 1,
     });
     if (!result.cancelled) {
+      const img = result;
+      setImg({ uri: "data:image/png;base64," + img.base64 });
+      AsyncStorage.setItem(
+        "avatar",
+        "data:image/png;base64," + img.base64
+      ).then();
     }
   };
 
@@ -84,10 +88,11 @@ function AccountScreen(props: any) {
           alignItems: "center",
         }}
       >
-        <Image
+        <Image source={img} style={styles.selectAvatarImage} />
+        {/* <Image
           source={require("../../../assets/png-avatar.png")}
           style={styles.selectAvatarImage}
-        />
+        /> */}
         <View style={{ alignItems: "center" }}>
           <Text>Profile completion</Text>
           <Text style={styles.orange}>33%</Text>
@@ -139,7 +144,12 @@ function AccountScreen(props: any) {
               <Text>Test</Text>
             </View>
           </View>
-          <List.Icon style={styles.chooseIcon} icon="pencil" color="grey" />
+          <TouchableOpacity style={styles.addProfile}>
+            <View style={styles.signinWithContent}>
+              <Text style={styles.add}>Add</Text>
+            </View>
+          </TouchableOpacity>
+          {/* <List.Icon style={styles.chooseIcon} icon="pencil" color="grey" /> */}
         </View>
         <View
           style={{
@@ -155,7 +165,12 @@ function AccountScreen(props: any) {
               <Text>Test</Text>
             </View>
           </View>
-          <List.Icon style={styles.chooseIcon} icon="pencil" color="grey" />
+          <TouchableOpacity style={styles.addProfile}>
+            <View style={styles.signinWithContent}>
+              <Text style={styles.add}>Add</Text>
+            </View>
+          </TouchableOpacity>
+          {/* <List.Icon style={styles.chooseIcon} icon="pencil" color="grey" /> */}
         </View>
         <View
           style={{
@@ -171,7 +186,12 @@ function AccountScreen(props: any) {
               <Text>Test</Text>
             </View>
           </View>
-          <List.Icon style={styles.chooseIcon} icon="pencil" color="grey" />
+          <TouchableOpacity style={styles.addProfile}>
+            <View style={styles.signinWithContent}>
+              <Text style={styles.add}>Add</Text>
+            </View>
+          </TouchableOpacity>
+          {/* <List.Icon style={styles.chooseIcon} icon="pencil" color="grey" /> */}
         </View>
         <View
           style={{

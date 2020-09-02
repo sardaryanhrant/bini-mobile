@@ -69,7 +69,6 @@ function Step2(props: any) {
       aspect: [1, 1],
       quality: 1,
     });
-
     if (!result.cancelled) {
       const img = result;
       setImg({uri: 'data:image/png;base64,' + img.base64});
