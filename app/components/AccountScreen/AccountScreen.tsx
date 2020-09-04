@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Text,
   View,
@@ -13,16 +13,60 @@ import * as Permissions from "expo-permissions";
 import Constants from "expo-constants";
 import * as ImagePicker from "expo-image-picker";
 
+const theme = {
+  colors: {
+    primary: "#ff671b",
+  },
+};
+
 function AccountScreen(props: any) {
+  const [firstName, setName] = useState("");
+  const [email, setEmail] = useState("");
+  useEffect(() => {
+    AsyncStorage.getItem("userData").then((userData: string) => {
+      const user = JSON.parse(userData);
+      setName(user.displayName);
+      setEmail(user.email);
+    });
+  }, []);
+
   const [img, setImg] = useState(require("../../../assets/png-avatar.png"));
   AsyncStorage.getItem("avatar").then((avatar) => {
     setImg({ uri: avatar });
-    console.log(avatar);
   });
 
   const [selectorVisible, setVisible] = useState(false);
   const _showDialog = () => setVisible(true);
   const _hideDialog = () => setVisible(false);
+
+  ///////////- Edit First Name -///////////
+  const [selectorEditFirstName, setEditFirstName] = useState(false);
+  const editFirstName = () => {
+    if (selectorEditFirstName) {
+      setEditFirstName(false);
+    } else {
+      setEditFirstName(true);
+    }
+  };
+  const addName = () => {
+    setEditFirstName(false);
+  };
+  ///////////////- End edit first name - /////////////
+
+  ///////////- Edit Email -///////////
+  const [selectorEditEmail, setEditEmail] = useState(false);
+  const editEmail = () => {
+    if (selectorEditEmail) {
+      setEditEmail(false);
+    } else {
+      setEditEmail(true);
+    }
+  };
+  const addEmail = () => {
+    setEditEmail(false);
+  };
+  ///////////////- End edit email - /////////////
+
   const chooseImage = () => {
     _showDialog();
   };
@@ -54,7 +98,7 @@ function AccountScreen(props: any) {
     });
     if (!result.cancelled) {
       const img = result;
-      setImg({ uri: "data:image/png;base64," + img.base64 });
+      ({ uri: "data:image/png;base64," + img.base64 });
       AsyncStorage.setItem(
         "avatar",
         "data:image/png;base64," + img.base64
@@ -120,15 +164,31 @@ function AccountScreen(props: any) {
             <List.Icon style={styles.chooseIcon} icon="account" color="grey" />
             <View style={{ flexDirection: "column", marginTop: 6 }}>
               <Text>First Name</Text>
-              <Text>Test</Text>
+              {/* <Text>{name}</Text> */}
+              {selectorEditFirstName ? (
+                <TextInput
+                  style={{ width: 200, height: 35 }}
+                  value={firstName}
+                ></TextInput>
+              ) : (
+                <Text style={{ marginTop: 4 }}>{firstName}</Text>
+              )}
             </View>
           </View>
-          <TouchableOpacity style={styles.addProfile}>
-            <View style={styles.signinWithContent}>
-              <Text style={styles.add}>Add</Text>
-            </View>
-          </TouchableOpacity>
-          {/* <List.Icon style={styles.chooseIcon} icon="pencil" color="grey" /> */}
+          {!selectorEditFirstName ? (
+            <TouchableOpacity onPress={() => editFirstName()}>
+              <List.Icon style={styles.chooseIcon} icon="pencil" color="grey" />
+            </TouchableOpacity>
+          ) : (
+            <TouchableOpacity
+              onPress={() => addName()}
+              style={styles.addProfile}
+            >
+              <View style={styles.signinWithContent}>
+                <Text style={styles.add}>Add</Text>
+              </View>
+            </TouchableOpacity>
+          )}
         </View>
         <View
           style={{
@@ -141,7 +201,7 @@ function AccountScreen(props: any) {
             <List.Icon style={styles.chooseIcon} icon="account" color="grey" />
             <View style={{ flexDirection: "column", marginTop: 6 }}>
               <Text>Last Name</Text>
-              <Text>Test</Text>
+              <Text style={{ marginTop: 4 }}>Test</Text>
             </View>
           </View>
           <TouchableOpacity style={styles.addProfile}>
@@ -149,7 +209,9 @@ function AccountScreen(props: any) {
               <Text style={styles.add}>Add</Text>
             </View>
           </TouchableOpacity>
-          {/* <List.Icon style={styles.chooseIcon} icon="pencil" color="grey" /> */}
+          {/* <TouchableOpacity onPress={() => editName()}>
+            <List.Icon style={styles.chooseIcon} icon="pencil" color="grey" />
+          </TouchableOpacity> */}
         </View>
         <View
           style={{
@@ -162,7 +224,7 @@ function AccountScreen(props: any) {
             <List.Icon style={styles.chooseIcon} icon="account" color="grey" />
             <View style={{ flexDirection: "column", marginTop: 6 }}>
               <Text>Username</Text>
-              <Text>Test</Text>
+              <Text style={{ marginTop: 4 }}>Test</Text>
             </View>
           </View>
           <TouchableOpacity style={styles.addProfile}>
@@ -170,7 +232,9 @@ function AccountScreen(props: any) {
               <Text style={styles.add}>Add</Text>
             </View>
           </TouchableOpacity>
-          {/* <List.Icon style={styles.chooseIcon} icon="pencil" color="grey" /> */}
+          {/* <TouchableOpacity onPress={() => editName()}>
+            <List.Icon style={styles.chooseIcon} icon="pencil" color="grey" />
+          </TouchableOpacity> */}
         </View>
         <View
           style={{
@@ -183,15 +247,30 @@ function AccountScreen(props: any) {
             <List.Icon style={styles.chooseIcon} icon="email" color="grey" />
             <View style={{ flexDirection: "column", marginTop: 6 }}>
               <Text>E-mail address</Text>
-              <Text>Test</Text>
+              {selectorEditEmail ? (
+                <TextInput
+                  style={{ width: 200, height: 35 }}
+                  value={email}
+                ></TextInput>
+              ) : (
+                <Text style={{ marginTop: 4 }}>{email}</Text>
+              )}
             </View>
           </View>
-          <TouchableOpacity style={styles.addProfile}>
-            <View style={styles.signinWithContent}>
-              <Text style={styles.add}>Add</Text>
-            </View>
-          </TouchableOpacity>
-          {/* <List.Icon style={styles.chooseIcon} icon="pencil" color="grey" /> */}
+          {!selectorEditEmail ? (
+            <TouchableOpacity onPress={() => editEmail()}>
+              <List.Icon style={styles.chooseIcon} icon="pencil" color="grey" />
+            </TouchableOpacity>
+          ) : (
+            <TouchableOpacity
+              onPress={() => addEmail()}
+              style={styles.addProfile}
+            >
+              <View style={styles.signinWithContent}>
+                <Text style={styles.add}>Add</Text>
+              </View>
+            </TouchableOpacity>
+          )}
         </View>
         <View
           style={{
